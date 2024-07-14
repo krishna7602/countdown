@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Down</title>
+</head>
+<body>
+    <div id="container">
+
+    </div>
+
+    <div id="time">
+        Till 2025
+    </div>
+
+    <script>
+        const newdate=new Date('2025-01-01T00:00');
+        function updatecount(){
+            const currentdate=new Date();
+            const timedif=(newdate-currentdate);
+            const days=Math.floor(timedif/(1000*60*60*24))
+
+            const hours=Math.floor((timedif % (1000*60*60*24)/(100*60*60))%24);
+
+            const min=Math.floor(timedif % (1000*60*60)/(1000*60));
+
+            const sec=Math.floor(timedif % (1000*60)/1000)
+
+            let a=document.getElementById('container');
+            a.innerHTML=`${days} days ${hours} hours ${min} minutes ${sec} second remaining`
+
+        }
+        setInterval(updatecount,1000);
+
+        updatecount()
+    </script>
+</body>
+</html>
